@@ -20,14 +20,16 @@ jobs:
             wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/preprints.bib
       - name: Install LaTeX dependencies
         uses: xu-cheng/texlive-action/full@v1
-        run: |
-          tlmgr install fontawesome5 paracol
+        with:
+          run: |
+            tlmgr install fontawesome5 paracol
       - name: Build CV
         uses: xu-cheng/texlive-action/full@v1
-        run: |
-          pdflatex main
-          biber main
-          pdflatex main
+        with:
+          run: |
+            pdflatex main
+            biber main
+            pdflatex main
 
       - name: Commit results
         run: |
