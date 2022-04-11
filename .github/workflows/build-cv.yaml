@@ -1,0 +1,37 @@
+
+on:
+  push:
+    branches: [main, master]
+
+name: build-cv
+
+jobs:
+  build-cv:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: xu-cheng/texlive-action/full@v1
+        with:
+          run: |
+            apk add make libcurl4-openssl-dev wget biber
+            make
+            wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/pubmed.bib
+            wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/preprints.bib
+      - name: Install LaTeX dependencies
+        run: |
+          tlmgr install fontawesome5 paracol
+      - name: Build CV
+        run: |
+          pdflatex main
+          biber main
+          pdflatex main
+
+      - name: Commit results
+        run: |
+          git config --global user.email "mcuoco12@gmail.com"
+          git config --global user.name "mikecuoco"
+          git add main.pdf || echo "No changes to add"
+          git commit -m 'Re-build CV' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
