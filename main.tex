@@ -8,8 +8,7 @@
 \usepackage{setspace, longtable, graphicx, hyphenat, hyperref, fancyhdr, ifthen, everypage, enumitem, amsmath, fontawesome5, paracol}
 
 % Bibliography
-% TODO: make bibliography cross multiple pages
-% TODO: show full names
+% TODO: fix style to show show full names and/or not show journal issue
 % Style = AuthorYear to show authors and no numbers
 % Sorting = ydnt to sort by year, then by date, then by title in descending order
 \usepackage[backend=biber, style=authortitle, sorting=ydnt, maxbibnames=999, url=false, isbn=false]{biblatex}
@@ -38,7 +37,7 @@
 % --- Page layout settings ---
 
 % Set page margins
-\usepackage[left=1in, right=1in, bottom=0.7in, top=0.7in]{geometry}
+\usepackage[left=0.75in, right=0.75in, bottom=0.7in, top=0.7in]{geometry}
 
 % Set line spacing
 \renewcommand{\baselinestretch}{1.15}
@@ -47,7 +46,7 @@
 
 % Set link colors
 \usepackage[dvipsnames]{xcolor}
-\hypersetup{colorlinks=true, linkcolor=RoyalBlue, urlcolor=RoyalBlue}
+\hypersetup{colorlinks=false, linkcolor=RoyalBlue, urlcolor=RoyalBlue}
 
 % Set font to Libertine, including math support
 % \usepackage{libertine}
@@ -74,7 +73,7 @@
 % Line 1: Email, Phone Number, and Location
 \faIcon{envelope} \href{mailto:mcuoco@ucsd.edu}{mcuoco@ucsd.edu} &
 \faIcon{phone} (978) 505-0993 &
-\faIcon{building} Salk Institute &
+\faIcon{building} \href{https://www.salk.edu/}{Salk Institute} &
 \faIcon{map-marker} La Jolla, California \\
 
 % Line 2: ORCID, Twitter, Github, LinkedIn
@@ -93,19 +92,19 @@
 \setlength{\tabcolsep}{8pt}
 
 % Set the width of each column
-\begin{longtable}{p{1.4in}p{4.7in}}
+\begin{longtable}{p{1.6in}p{4.9in}}
 
 % --- Section: Research interests ---
 
 \nohyphens{\color{OliveGreen}{Research interests}}
-& Retrotransposon activity in the developing, healthy, aging, and diseased human brain \\
+& Retrotransposon activity in the developing, healthy, aging, and diseased human brain. \\
 & \\
 
 % --- Section: Education ---
 
 \color{OliveGreen}{Education} 
 & \textbf{University of California, San Diego} \hfill La Jolla, California \\ 
-& PhD in Bioinformatics and Systems Biology \hfill In Progress \\
+& PhD in \href{https://bioinformatics.ucsd.edu/}{Bioinformatics and Systems Biology (BISB)} \hfill In Progress \\
 & Advised by \href{https://www.salk.edu/scientist/rusty-gage/}{Rusty Gage} and \href{https://cogsci.ucsd.edu/people/faculty/eran-mukamel.html}{Eran Mukamel} \\
 & \\
 
@@ -126,11 +125,11 @@
 
 {\color{OliveGreen}{Honors and}} 
 {\color{OliveGreen}{Awards}} 
-& NSF Graduate Research Fellowship \hfill 2022\\
+& \href{https://www.nsfgrfp.orgresources/about-grfp/}{NSF Graduate Research Fellowship} \hfill 2022\\
 & \hspace{0.1in} \textit{National Science Foundation (NSF)} \\
 & Spot Award \hfill 2017 \\
 & \hspace{0.1in} \textit{Broad Institute} \\
-& Beta Beta Beta National Biology Honors Society \hfill 2014 \\
+& \href{https://www.tribeta.org/about-beta-beta-beta}{Beta Beta Beta National Biology Honors Society} \hfill 2014 \\
 & \hspace{0.1in} \textit{Trinity College} \\
 & NESCAC Winter All-Academic Team \hfill 2014 \\
 & \hspace{0.1in} \textit{Trinity College} \\
@@ -158,7 +157,7 @@ Yaara Oren \\
 & \textbf{Undergraduate Researcher} \hfill 2013 \\
 & \textit{Trinity College} \hfill Hartford, Connecticut \\
 & HHMI Science Education Alliance-Phage Hunters Advancing Genomics and Evolutionary Science program. 
-(SEA-PHAGES, \href{https://seaphages.org/}{seaphages.org}) \\
+(SEA-PHAGES: \href{https://seaphages.org/}{seaphages.org}) \\
 & Isolated and purified bacteriophage species. Sequenced and annotated the bacteriophage's genome \\
 & \\
 
@@ -189,7 +188,7 @@ Yaara Oren \\
 \setlength{\tabcolsep}{8pt}
 
 % % Set the width of each column
-\begin{longtable}{p{1.4in}p{4.7in}}
+\begin{longtable}{p{1.6in}p{4.9in}}
 
 % --- Section: Teaching experience ---
 
@@ -211,7 +210,8 @@ Yaara Oren \\
 & \\
 
 % --- Section: Talks and tutorials ---
-
+% TODO: add invited talks
+% TODO: add conferences
 % {\color{OliveGreen}{Talks and tutorials}} 
 % & \textbf{Title of your most recent presentation} \hfill Month Year \\
 % & Name of conference, workshop, seminar, venue, etc., or a description \\
@@ -223,23 +223,32 @@ Yaara Oren \\
 
 % --- Section: Various skills (programming, software, languages, etc.) ---
 
-% {\color{OliveGreen}{Skills}} 
-% & \textbf{Programming}\\
-% & Proficient in: programming language 1, programming language 2. \\
-% & Familiar with: programming language 3, programming language 4. \\
-% & \\
-
-% & \textbf{Languages} \\
-% & Language 1 (fluent), Language 2 (advanced) \\
-% & \\
+{\color{OliveGreen}{Skills}} 
+& \textbf{Programming}\\
+& Proficient in: R, LaTeX, Bash. \\
+& Familiar with: Python, Google Cloud Platform. \\
+& \\
 
 % --- Section: Service and outreach ---
 
-% \color{OliveGreen}{Service and outreach}
-% & \textbf{Title of organization you were in} \hfill Month Year -- Month Year \\
-% & Description of your responsibilities. Integer pretium semper justo. Proin risus. Aliquam volutpat est vel massa. \\
-% & \\
+{\color{OliveGreen}{Service and Outreach}}
 
+& \href{https://www.ucsddasl.com/about}{\textbf{Diversity and Science Lecture Series (DASL)}} \hfill La Jolla, California \\
+& \textit{Seminar Organizer} \hfill 2021 - Present \\
+& \textit{Symposium Organizer} \hfill Fall 2021 \\
+& Organized and led 3-day symposium focused on issues of diversity, equity and inclusion in STEM \\
+& \\
+
+& \href{https://www.bummpucsd.org/about}{\textbf{Biology Undergraduate and Master's Mentorship Program (BUMMP)}} \hfill La Jolla, California \\
+& \textit{Mentor} \hfill 2021 - Present \\
+& Meet with undergraduate students twice quarterly to review  \\
+& \\
+
+& \href{https://gbic.ucsd.edu/}{\textbf{Graduate Bioinformatics Council (GBIC)}} \hfill La Jolla, California \\
+& \textit{Head of Onboarding} \hfill 2021 - Present \\
+& Led onboarding of new cohorts to Bioinformatics and Systems Biology graduate program \\
+& \textit{Symposium Organizer} \hfill 2022 \\
+& \\
 % --- Section: Professional society memberships ---
 % --- Note: section title is spread over two lines ---
 
