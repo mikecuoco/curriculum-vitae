@@ -15,8 +15,7 @@ jobs:
       - uses: xu-cheng/texlive-action/full@v1
         with:
           run: |
-            apk add make wget biber
-            make
+            apk add wget biber
             wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/pubmed.bib
             wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/preprints.bib
       - name: Install LaTeX dependencies
