@@ -15,7 +15,7 @@ jobs:
       - uses: xu-cheng/texlive-action/full@v1
         with:
           run: |
-            apk add make libcurl4-openssl-dev wget biber
+            apk add make wget biber
             make
             wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/pubmed.bib
             wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/preprints.bib
