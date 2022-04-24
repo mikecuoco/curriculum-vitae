@@ -1,8 +1,8 @@
 # Workflow to build main.tex into main.pdf, using repository_dispatch trigger
 name: build-cv
 on:
-  # push:
-  #   branches: [main, master]
+  push:
+    branches: [main, master]
   repository_dispatch:
     types: [get-commit-bibs]
     
@@ -45,3 +45,11 @@ jobs:
           git add -f main.pdf || echo "No changes to add"
           git commit -m 'Re-build CV' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
+
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: mikecuoco/michaelcuoco.com
+          event-type: build-cv
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
