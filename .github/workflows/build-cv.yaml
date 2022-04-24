@@ -17,7 +17,8 @@ jobs:
       #     ref: ${{ github.event.client_payload.ref }}
       # - run: echo ${{ github.event.client_payload.sha }}
 
-      - uses: xu-cheng/texlive-action/full@v1
+      - name: Get bibliographic data
+        uses: xu-cheng/texlive-action/full@v1
         with:
           run: |
             apk add wget biber
@@ -28,6 +29,7 @@ jobs:
         uses: xu-cheng/texlive-action/full@v1
         with:
           run: |
+            tlmgr update --self
             tlmgr install fontawesome5 paracol
 
       - name: Build CV
