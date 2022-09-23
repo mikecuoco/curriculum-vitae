@@ -1,5 +1,5 @@
 # Workflow to build main.tex into main.pdf, using repository_dispatch trigger
-name: build-cv
+name: build
 on:
   push:
     branches: [main, master]

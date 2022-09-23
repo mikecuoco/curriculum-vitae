@@ -1,9 +1,12 @@
 # Mike's Curriculum Vitae (CV)
 
-## TODO 
+![Build](https://github.com/mikecuoco/curriculum-vitae/actions/workflows/build-cv.yml/badge.svg)
+
+## TODO
 
 - [X] Add to personal website
+- [X] Add trigger to build when commit is made to [mikecuoco/FindMyPubs](https://github.com/mikecuoco/FindMyPubs)
+- [ ] Add ACOD and BISB DEI Committee
 - [ ] Add conference talks and posters
 - [ ] Add footer with my name and page number
-- [ ] Add trigger to build when commit is made to [mikecuoco/FindMyPubs](https://github.com/mikecuoco/FindMyPubs)
 - [ ] Add note about contribution to Pope et al. 2015
