@@ -20,7 +20,7 @@ jobs:
       - name: Get bibliographic data, install dependencies, build CV
         uses: xu-cheng/texlive-action@v2
         with:
-          scheme: small
+          scheme: full
           run: |
             apk add wget
             wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/pubmed.bib
