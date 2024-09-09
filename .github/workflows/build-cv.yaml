@@ -22,10 +22,10 @@ jobs:
         with:
           scheme: small
           run: |
-            apk add wget biber=2.19
+            apk add wget
             wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/pubmed.bib
             wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/preprints.bib
-            tlmgr update --self
+            tlmgr update --self --all
             tlmgr install fontawesome5 paracol
             pdflatex main
             biber main
