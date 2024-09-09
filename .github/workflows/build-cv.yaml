@@ -20,7 +20,7 @@ jobs:
       - name: Get bibliographic data, install dependencies, build CV
         uses: xu-cheng/texlive-action@v2
         with:
-          scheme: small
+          docker_image: ghcr.io/xu-cheng/texlive-full:20240701
           run: |
             apk add wget biber
             wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/pubmed.bib
