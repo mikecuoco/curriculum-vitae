@@ -1,0 +1,98 @@
+name: "Michael Sellers Cuoco"
+title: "PhD Student, Bioinformatics and Systems Biology"
+location: "La Jolla, California"
+email: "mcuoco@ucsd.edu"
+phone: "(978) 505-0993"
+website: "https://www.michaelcuoco.com/"
+orcid: "0000-0003-2163-5120"
+github: "mikecuoco"
+twitter: "cuoco_michael"
+linkedin: "michaelcuoco"
+
+affiliations:
+  - { label: "Salk Institute", url: "https://www.salk.edu/" }
+  - { label: "UC San Diego", url: "https://ucsd.edu/" }
+
+research_interests:
+  - "Applying genomics data science to learn new biology of aging and disease."
+  - "Interested broadly in repetitive DNA and gene regulatory networks."
+  - "Thesis work is focused on retrotransposon activity in the human brain."
+
+education:
+  - institution: "University of California, San Diego"
+    location: "La Jolla, California"
+    degree: "PhD in Bioinformatics and Systems Biology"
+    date: "In Progress"
+    committee:
+      - { name: "Fred H. Gage, PhD", url: "https://www.salk.edu/scientist/rusty-gage/", role: "Chair" }
+      - { name: "Eran A. Mukamel, PhD", url: "https://cogsci.ucsd.edu/people/faculty/eran-mukamel.html", role: "Co-Chair" }
+      - { name: "Graham McVicker, PhD", url: "https://www.salk.edu/scientist/graham-mcvicker/" }
+      - { name: "Melissa Gymrek, PhD", url: "https://profiles.ucsd.edu/melissa.gymrek" }
+      - { name: "Nicholas Schork, PhD", url: "https://www.tgen.org/faculty-profiles/nik-schork/" }
+  - institution: "Trinity College"
+    location: "Hartford, Connecticut"
+    degree: "BS in Molecular and Cellular Biology"
+    date: "May 2016"
+    minor: "Models and Data"
+
+awards:
+  - { title: "NSF Graduate Research Fellowship", org: "National Science Foundation (NSF)", year: "2022", url: "https://www.nsfgrfp.org/resources/about-grfp/" }
+  - { title: "Spot Award", org: "Broad Institute", year: "2017" }
+  - { title: "Beta Beta Beta National Biology Honors Society", org: "Trinity College", year: "2014", url: "https://www.tribeta.org/about-beta-beta-beta" }
+  - { title: "NESCAC Winter All-Academic Team", org: "Trinity College", year: "2014" }
+
+experience:
+  - role: "PhD Student"
+    orgs:
+      - { name: "Gage Lab, Salk Institute for Biological Studies", location: "La Jolla, California" }
+      - { name: "Mukamel Lab, UC San Diego", location: "La Jolla, California" }
+    dates: "2020 -- Present"
+    mentors:
+      - { name: "Fred H. Gage", url: "https://www.salk.edu/scientist/rusty-gage/" }
+      - { name: "Eran A. Mukamel", url: "https://cogsci.ucsd.edu/people/faculty/eran-mukamel.html" }
+  - role: "Research Associate"
+    orgs:
+      - { name: "Regev Lab, Broad Institute", location: "Cambridge, Massachusetts" }
+    dates: "2016 -- 2020"
+    mentors:
+      - { name: "Aviv Regev", url: "https://www.roche.com/about/leadership/aviv-regev" }
+      - { name: "Benjamin Izar", url: "https://www.cancer.columbia.edu/profile/benjamin-izar-md" }
+      - { name: "Pratiksha Thakore" }
+      - { name: "Yaara Oren" }
+  - role: "Undergraduate Researcher"
+    orgs:
+      - { name: "Meyerson Lab, Dana-Farber Cancer Institute", location: "Boston, Massachusetts" }
+    dates: "2014 -- 2016"
+    mentors:
+      - { name: "Matthew Meyerson", url: "https://meyersonlab.dana-farber.org/matthew-meyerson.html" }
+      - { name: "Alison Taylor", url: "https://www.cancer.columbia.edu/profile/alison-taylor-phd" }
+  - role: "Undergraduate Researcher"
+    orgs:
+      - { name: "Trinity College", location: "Hartford, Connecticut" }
+    dates: "2013"
+    notes: "HHMI Science Education Alliance - SEA-PHAGES"
+
+mentorship:
+  - { name: "Joelle Faybishenko", dates: "Fall 2022 -- present", org: "Gage Lab, Salk Institute for Biological Studies", location: "La Jolla, California" }
+  - { name: "Evan Lee", dates: "Fall 2022 -- present", org: "Biology Undergraduate and Master's Mentorship", org_url: "https://www.bummpucsd.org/about", location: "La Jolla, California" }
+  - { name: "Rohini Gadde", dates: "Fall 2021 -- present", org: "Mukamel Lab, UC San Diego", location: "La Jolla, California" }
+  - { name: "Anise Porter", dates: "Fall 2020 -- present", org: "Biology Undergraduate and Master's Mentorship", org_url: "https://www.bummpucsd.org/about", location: "La Jolla, California" }
+  - { name: "Jesslyn Goh", dates: "Fall 2019 -- 2020", org: "Regev Lab, Broad Institute", location: "Cambridge, Massachusetts", current: "Masters Student, Harvard University", current_location: "Boston, Massachusetts" }
+
+teaching:
+  - { role: "Bootcamp instructor", dates: "Fall 2021, Fall 2022", org: "Bioinformatics and Systems Biology, UCSD", location: "La Jolla, California" }
+  - { role: "Teaching assistant", dates: "Spring 2015", org: "Department of Biology, Trinity College", location: "Hartford, Connecticut", courses: ["BIOL 224: Genetics"] }
+  - { role: "Tutor", dates: "2014 -- 2016", org: "Department of Biology, Trinity College", location: "Hartford, Connecticut", courses: ["BIOL 182: Evolution of Life", "BIOL 183: Cellular Basis of Life", "BIOL 224: Genetics"] }
+
+service:
+  - { role: "Committee Member", dates: "2021 -- Present", org: "Advisory Committee on Diversity", location: "La Jolla, California", parent: "Salk Institute for Biological Studies" }
+  - { role: "Director of Onboarding", dates: "2021 -- Present", org: "Graduate Bioinformatics Council", org_url: "https://gbic.ucsd.edu/", location: "La Jolla, California", parent: "UCSD Bioinformatics and Systems Biology" }
+  - { role: "Committee Member", dates: "2020 -- Present", org: "Diversity Equity and Inclusion Committee", org_url: "https://bioinformatics.ucsd.edu/node/19020", location: "La Jolla, California", parent: "UCSD Bioinformatics and Systems Biology" }
+  - { role: "Seminar Organizer", dates: "2021", org: "Diversity and Science Lecture Series", org_url: "https://www.ucsddasl.com/about", location: "La Jolla, California", parent: "UCSD" }
+  - { role: "Symposium Organizer", dates: "Fall 2021", org: "Diversity and Science Lecture Series", location: "La Jolla, California", parent: "UCSD" }
+  - { role: "Volunteer - High Tech High Mesa", dates: "Fall 2021", org: "SciChats@Salk Education Outreach", org_url: "https://www.salk.edu/about/education-outreach/volunteer-opportunities/scichatssalk/", location: "La Jolla, California", parent: "Salk Institute for Biological Studies" }
+  - { role: "Volunteer - La Jolla High School", dates: "Fall 2021", org: "SciChats@Salk Education Outreach", org_url: "https://www.salk.edu/about/education-outreach/volunteer-opportunities/scichatssalk/", location: "La Jolla, California", parent: "Salk Institute for Biological Studies" }
+
+skills:
+  programming_languages: ["R", "Python", "Bash"]
+
