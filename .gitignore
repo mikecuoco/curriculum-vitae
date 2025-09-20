@@ -3,3 +3,5 @@ main.*
 *bib
 *.egg-info
 *.lock
+.venv
+!work.bib

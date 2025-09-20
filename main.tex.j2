@@ -12,8 +12,7 @@
 % Style = AuthorYear to show authors and no numbers
 % Sorting = ydnt to sort by year, then by date, then by title in descending order
 \usepackage[backend=biber, style=authortitle, sorting=ydnt, maxbibnames=999, url=false, isbn=false]{biblatex}
-\addbibresource{pubmed.bib}
-\addbibresource{preprints.bib}
+\addbibresource{work.bib}
 \renewcommand*{\bibfont}{\small}
 
 
@@ -101,17 +100,24 @@
 
 % --- Section: Research interests ---
 
-\nohyphens{\color{OliveGreen}{Research interests}}
+((* if research_interests is defined and research_interests|length > 0 *))
 ((* for ri in research_interests *))
-& (( ri )) \\
+((* if loop.first *))\nohyphens{\textcolor{OliveGreen}{Research interests}} & (( ri )) \\
+((* else *))& (( ri )) \\
+((* endif *))
 ((* endfor *))
 & \\
+((* else *))
+\nohyphens{\textcolor{OliveGreen}{Research interests}} & \\
+((* endif *))
 
 % --- Section: Education ---
 
-\color{OliveGreen}{Education} 
+((* if education is defined and education|length > 0 *))
 ((* for edu in education *))
-& \textbf{(( edu.institution ))} \hfill (( edu.location )) \\
+((* if loop.first *))\textcolor{OliveGreen}{Education} & \textbf{(( edu.institution ))} \hfill (( edu.location )) \\
+((* else *))& \textbf{(( edu.institution ))} \hfill (( edu.location )) \\
+((* endif *))
 & (( edu.degree )) \hfill (( edu.date )) \\
 ((* if edu.committee is defined *))& Thesis Committee:
 \begin{compactitem}
@@ -122,27 +128,32 @@
 ((* endif *))
 & \\
 ((* endfor *))
+((* else *))
+\textcolor{OliveGreen}{Education} & \\
+((* endif *))
 
 % --- Section: Honors and Awards ---
 
-{\color{OliveGreen}{Honors and}} 
-{\color{OliveGreen}{Awards}} 
+((* if awards is defined and awards|length > 0 *))
 ((* for aw in awards *))
-((* if aw.url is defined and aw.url *))
-& \href{(( aw.url ))}{(( aw.title ))} \hfill (( aw.year ))\\
-((* else *))
-& (( aw.title )) \hfill (( aw.year ))\\
+((* if loop.first *)){\textcolor{OliveGreen}{Honors and Awards}} ((* if aw.url is defined and aw.url *))& \href{(( aw.url ))}{(( aw.title ))} \hfill (( aw.year ))\\((* else *))& (( aw.title )) \hfill (( aw.year ))\\((* endif *))
+((* else *))((* if aw.url is defined and aw.url *))& \href{(( aw.url ))}{(( aw.title ))} \hfill (( aw.year ))\\((* else *))& (( aw.title )) \hfill (( aw.year ))\\((* endif *))
 ((* endif *))
 ((* if aw.org is defined *))& \hspace{0.1in} \textit{(( aw.org ))} \\
 ((* endif *))
 ((* endfor *))
 & \\
+((* else *))
+{\textcolor{OliveGreen}{Honors and Awards}} & \\
+((* endif *))
 
 % --- Section: Research experience ---
 
-{\color{OliveGreen}{Research experience}}
+((* if experience is defined and experience|length > 0 *))
 ((* for ex in experience *))
-& \textbf{(( ex.role ))} \hfill (( ex.dates ))   \\
+((* if loop.first *)){\textcolor{OliveGreen}{Research experience}} & \textbf{(( ex.role ))} \hfill (( ex.dates ))   \\
+((* else *))& \textbf{(( ex.role ))} \hfill (( ex.dates ))   \\
+((* endif *))
 ((* for org in ex.orgs *))
 & \textit{(( org.name ))} \hfill (( org.location )) \\
 ((* endfor *))
@@ -152,25 +163,55 @@
 ((* endif *))
 & \\
 ((* endfor *))
+((* else *))
+{\textcolor{OliveGreen}{Research experience}} & \\
+((* endif *))
 
 \end{longtable} % End table to be biblatex friendly
 
-% --- Section: Publications ---
-{\color{OliveGreen}{\textbf{Research}: Published}} 
+% --- Section: In Preparation / Submitted ---
 \columnratio{0.02}
 \begin{paracol}{2}
   \switchcolumn
-  \nocite{*} 
-  \printbibliography[heading=none, keyword=published]
+  \nocite{*}
+  % Heading will only appear if there are entries
+  \printbibliography[
+    heading=subbibliography,
+    title={\textcolor{OliveGreen}{\textbf{Research}: In Preparation}},
+    keyword={in preparation}
+  ]
+  \printbibliography[
+    heading=subbibliography,
+    title={\textcolor{OliveGreen}{\textbf{Research}: Submitted}},
+    keyword={submitted}
+  ]
+\end{paracol}
+
+% --- Section: Publications ---
+\columnratio{0.02}
+\begin{paracol}{2}
+  \switchcolumn
+  \nocite{*}
+  % Heading will only appear if there are entries
+\printbibliography[heading=subbibliography, title={\textcolor{OliveGreen}{\textbf{Research}: Published}}, keyword=published]
 \end{paracol}
 
 % --- Section: Preprints ---
-{\color{OliveGreen}{\textbf{Research}: Preprint}} 
 \columnratio{0.02}
 \begin{paracol}{2}
   \switchcolumn
-  \nocite{*} 
-  \printbibliography[heading=none, keyword=preprint]
+  \nocite{*}
+  % Heading will only appear if there are entries
+\printbibliography[heading=subbibliography, title={\textcolor{OliveGreen}{\textbf{Research}: Preprint}}, keyword=preprint]
+\end{paracol}
+
+% --- Section: Conferences ---
+\columnratio{0.02}
+\begin{paracol}{2}
+  \switchcolumn
+  \nocite{*}
+  % Heading will only appear if there are entries
+  \printbibliography[heading=subbibliography, title={\textcolor{OliveGreen}{\textbf{Research}: Conferences}}, keyword=conference]
 \end{paracol}
 
 % --- Restart the two-column table storing the main content ---
@@ -182,9 +223,10 @@
 \begin{longtable}{p{1.6in}p{4.9in}}
   
 % --- Section: Mentorship ---
-{\color{OliveGreen}{Mentorship}}
 ((* for m in mentorship *))
-& \textbf{(( m.name ))} \hfill (( m.dates )) \\
+((* if loop.first *)){\textcolor{OliveGreen}{Mentorship}} & \textbf{(( m.name ))} \hfill (( m.dates )) \\
+((* else *))& \textbf{(( m.name ))} \hfill (( m.dates )) \\
+((* endif *))
 & ((* if m.org_url is defined *))\href{(( m.org_url ))}{\textit{(( m.org ))}}((* else *))\textit{(( m.org ))}((* endif *)) \hfill (( m.location )) \\
 ((* if m.current is defined *))& \textbf{Current:} (( m.current )) \hfill (( m.current_location )) \\
 ((* endif *))
@@ -192,9 +234,10 @@
 ((* endfor *))
 
 % --- Section: Teaching experience ---
-{\color{OliveGreen}{Teaching}} 
 ((* for t in teaching *))
-& \textbf{(( t.role ))} \hfill (( t.dates )) \\
+((* if loop.first *)){\textcolor{OliveGreen}{Teaching}} & \textbf{(( t.role ))} \hfill (( t.dates )) \\
+((* else *))& \textbf{(( t.role ))} \hfill (( t.dates )) \\
+((* endif *))
 & \textit{(( t.org ))} \hfill (( t.location )) \\
 ((* if t.courses is defined *))((* for c in t.courses *))& (( c )) \\
 ((* endfor *))((* endif *))
@@ -202,9 +245,10 @@
 ((* endfor *))
 
 % --- Section: Service and outreach ---
-{\color{OliveGreen}{Service / Outreach}}
 ((* for s in service *))
-& \textbf{(( s.role ))} \hfill (( s.dates )) \\
+((* if loop.first *)){\textcolor{OliveGreen}{Service / Outreach}} & \textbf{(( s.role ))} \hfill (( s.dates )) \\
+((* else *))& \textbf{(( s.role ))} \hfill (( s.dates )) \\
+((* endif *))
 & ((* if s.org_url is defined *))\href{(( s.org_url ))}{\textit{(( s.org ))}}((* else *))\textit{(( s.org ))}((* endif *)) \hfill (( s.location )) \\
 ((* if s.parent is defined *))& \textit{(( s.parent ))} \\
 ((* endif *))
@@ -212,10 +256,21 @@
 ((* endfor *))
 
 % --- Section: Various skills ---
-{\color{OliveGreen}{Proficiencies / Skills}}
-& \textbf{Programming Languages}\\
-& (( skills.programming_languages | join(', ') )) \\
+((* if skills is defined and skills|length > 0 *))
+((* for key, value in skills.items() *))
+((* if loop.first *)){\textcolor{OliveGreen}{Proficiencies / Skills}} & \textbf{(( key | replace('_', ' ') | title ))}\\
+((* else *))& \textbf{(( key | replace('_', ' ') | title ))}\\
+((* endif *))
+((* if value is sequence and not (value is string) *))
+& (( value | join(', ') )) \\
+((* else *))
+& (( value )) \\
+((* endif *))
 & \\
+((* endfor *))
+((* else *))
+{\color{OliveGreen}{Proficiencies / Skills}} & \\
+((* endif *))
 
 % --- End of CV! ---
 \end{longtable}

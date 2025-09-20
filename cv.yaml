@@ -1,5 +1,5 @@
 name: "Michael Sellers Cuoco"
-title: "PhD Student, Bioinformatics and Systems Biology"
+title: "PhD Candidate, Bioinformatics and Systems Biology"
 location: "La Jolla, California"
 email: "mcuoco@ucsd.edu"
 phone: "(978) 505-0993"
@@ -22,7 +22,7 @@ education:
   - institution: "University of California, San Diego"
     location: "La Jolla, California"
     degree: "PhD in Bioinformatics and Systems Biology"
-    date: "In Progress"
+    date: "Expected December 2025"
     committee:
       - { name: "Fred H. Gage, PhD", url: "https://www.salk.edu/scientist/rusty-gage/", role: "Chair" }
       - { name: "Eran A. Mukamel, PhD", url: "https://cogsci.ucsd.edu/people/faculty/eran-mukamel.html", role: "Co-Chair" }
@@ -75,8 +75,8 @@ experience:
 mentorship:
   - { name: "Joelle Faybishenko", dates: "Fall 2022 -- present", org: "Gage Lab, Salk Institute for Biological Studies", location: "La Jolla, California" }
   - { name: "Evan Lee", dates: "Fall 2022 -- present", org: "Biology Undergraduate and Master's Mentorship", org_url: "https://www.bummpucsd.org/about", location: "La Jolla, California" }
-  - { name: "Rohini Gadde", dates: "Fall 2021 -- present", org: "Mukamel Lab, UC San Diego", location: "La Jolla, California" }
-  - { name: "Anise Porter", dates: "Fall 2020 -- present", org: "Biology Undergraduate and Master's Mentorship", org_url: "https://www.bummpucsd.org/about", location: "La Jolla, California" }
+  - { name: "Rohini Gadde", dates: "Fall 2021 -- 2024", org: "Mukamel Lab, UC San Diego", location: "La Jolla, California" }
+  - { name: "Anise Porter", dates: "Fall 2020 -- 2024", org: "Biology Undergraduate and Master's Mentorship", org_url: "https://www.bummpucsd.org/about", location: "La Jolla, California" }
   - { name: "Jesslyn Goh", dates: "Fall 2019 -- 2020", org: "Regev Lab, Broad Institute", location: "Cambridge, Massachusetts", current: "Masters Student, Harvard University", current_location: "Boston, Massachusetts" }
 
 teaching:
@@ -85,9 +85,9 @@ teaching:
   - { role: "Tutor", dates: "2014 -- 2016", org: "Department of Biology, Trinity College", location: "Hartford, Connecticut", courses: ["BIOL 182: Evolution of Life", "BIOL 183: Cellular Basis of Life", "BIOL 224: Genetics"] }
 
 service:
-  - { role: "Committee Member", dates: "2021 -- Present", org: "Advisory Committee on Diversity", location: "La Jolla, California", parent: "Salk Institute for Biological Studies" }
-  - { role: "Director of Onboarding", dates: "2021 -- Present", org: "Graduate Bioinformatics Council", org_url: "https://gbic.ucsd.edu/", location: "La Jolla, California", parent: "UCSD Bioinformatics and Systems Biology" }
-  - { role: "Committee Member", dates: "2020 -- Present", org: "Diversity Equity and Inclusion Committee", org_url: "https://bioinformatics.ucsd.edu/node/19020", location: "La Jolla, California", parent: "UCSD Bioinformatics and Systems Biology" }
+  - { role: "Committee Member", dates: "2021 -- 2024", org: "Advisory Committee on Diversity", location: "La Jolla, California", parent: "Salk Institute for Biological Studies" }
+  - { role: "Director of Onboarding", dates: "2021 -- 2024", org: "Graduate Bioinformatics Council", org_url: "https://gbic.ucsd.edu/", location: "La Jolla, California", parent: "UCSD Bioinformatics and Systems Biology" }
+  - { role: "Committee Member", dates: "2020 -- 2024", org: "Diversity Equity and Inclusion Committee", org_url: "https://bioinformatics.ucsd.edu/node/19020", location: "La Jolla, California", parent: "UCSD Bioinformatics and Systems Biology" }
   - { role: "Seminar Organizer", dates: "2021", org: "Diversity and Science Lecture Series", org_url: "https://www.ucsddasl.com/about", location: "La Jolla, California", parent: "UCSD" }
   - { role: "Symposium Organizer", dates: "Fall 2021", org: "Diversity and Science Lecture Series", location: "La Jolla, California", parent: "UCSD" }
   - { role: "Volunteer - High Tech High Mesa", dates: "Fall 2021", org: "SciChats@Salk Education Outreach", org_url: "https://www.salk.edu/about/education-outreach/volunteer-opportunities/scichatssalk/", location: "La Jolla, California", parent: "Salk Institute for Biological Studies" }
@@ -95,4 +95,6 @@ service:
 
 skills:
   programming_languages: ["R", "Python", "Bash"]
+  bioinformatics: ["Genomics", "Transcriptomics", "Epigenomics", "Single-Cell Genomics", "Machine Learning", "Statistical Modeling"]
+  other: ["Google Cloud Platform", "Docker", "Git", "GitHub Actions"]
 
