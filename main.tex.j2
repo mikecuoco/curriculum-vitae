@@ -15,6 +15,10 @@
 \addbibresource{work.bib}
 \renewcommand*{\bibfont}{\small}
 
+% Suppress "In:" before journal name for @article entries only
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
 
 % use this command to bold my name (adapted from here: https://tinyurl.com/y9f746x5)
 \newcommand{\makeauthorbold}[1]{%
@@ -101,12 +105,17 @@
 % --- Section: Research interests ---
 
 ((* if research_interests is defined and research_interests|length > 0 *))
+((* if research_interests is sequence and not (research_interests is string) *))
 ((* for ri in research_interests *))
 ((* if loop.first *))\nohyphens{\textcolor{OliveGreen}{Research interests}} & (( ri )) \\
 ((* else *))& (( ri )) \\
 ((* endif *))
 ((* endfor *))
 & \\
+((* else *))
+\nohyphens{\textcolor{OliveGreen}{Research interests}} & (( research_interests )) \\
+& \\
+((* endif *))
 ((* else *))
 \nohyphens{\textcolor{OliveGreen}{Research interests}} & \\
 ((* endif *))
