@@ -13,10 +13,7 @@ affiliations:
   - { label: "Salk Institute", url: "https://www.salk.edu/" }
   - { label: "UC San Diego", url: "https://ucsd.edu/" }
 
-research_interests:
-  - "Applying genomics data science to learn new biology of aging and disease."
-  - "Interested broadly in repetitive DNA and gene regulatory networks."
-  - "Thesis work is focused on retrotransposon activity in the human brain."
+research_interests: "My research passion lies in dissecting and addressing the molecular basis of human disease. To address these complex questions, I have developed a strong technical background in next-generation sequencing, CRISPR-based genome editing, data science, and machine learning. In my PhD, I have applied these skills to characterize LINE-1 retrotransposon activity in brain aging and disease."
 
 education:
   - institution: "University of California, San Diego"
@@ -73,13 +70,14 @@ experience:
     notes: "HHMI Science Education Alliance - SEA-PHAGES"
 
 mentorship:
-  - { name: "Joelle Faybishenko", dates: "Fall 2022 -- present", org: "Gage Lab, Salk Institute for Biological Studies", location: "La Jolla, California" }
+  - { name: "Joelle Faybishenko", dates: "Fall 2022 -- present", org: "Gage Lab, Salk Institute for Biological Studies", location: "La Jolla, California", current: "Masters Student, ETH Zurich", current_location: "Zurich, Switzerland"}
   - { name: "Evan Lee", dates: "Fall 2022 -- present", org: "Biology Undergraduate and Master's Mentorship", org_url: "https://www.bummpucsd.org/about", location: "La Jolla, California" }
   - { name: "Rohini Gadde", dates: "Fall 2021 -- 2024", org: "Mukamel Lab, UC San Diego", location: "La Jolla, California" }
   - { name: "Anise Porter", dates: "Fall 2020 -- 2024", org: "Biology Undergraduate and Master's Mentorship", org_url: "https://www.bummpucsd.org/about", location: "La Jolla, California" }
-  - { name: "Jesslyn Goh", dates: "Fall 2019 -- 2020", org: "Regev Lab, Broad Institute", location: "Cambridge, Massachusetts", current: "Masters Student, Harvard University", current_location: "Boston, Massachusetts" }
+  - { name: "Jesslyn Goh", dates: "Fall 2019 -- 2020", org: "Regev Lab, Broad Institute", location: "Cambridge, Massachusetts"}
 
 teaching:
+  - { role: "Guest Lecturer", dates: "Spring 2025", org: "Department of Cognitive Science, UC San Diego", courses: ["COGS9: Classification in Genomics Data"], location: "La Jolla, California" }
   - { role: "Bootcamp instructor", dates: "Fall 2021, Fall 2022", org: "Bioinformatics and Systems Biology, UCSD", location: "La Jolla, California" }
   - { role: "Teaching assistant", dates: "Spring 2015", org: "Department of Biology, Trinity College", location: "Hartford, Connecticut", courses: ["BIOL 224: Genetics"] }
   - { role: "Tutor", dates: "2014 -- 2016", org: "Department of Biology, Trinity College", location: "Hartford, Connecticut", courses: ["BIOL 182: Evolution of Life", "BIOL 183: Cellular Basis of Life", "BIOL 224: Genetics"] }
@@ -93,8 +91,19 @@ service:
   - { role: "Volunteer - High Tech High Mesa", dates: "Fall 2021", org: "SciChats@Salk Education Outreach", org_url: "https://www.salk.edu/about/education-outreach/volunteer-opportunities/scichatssalk/", location: "La Jolla, California", parent: "Salk Institute for Biological Studies" }
   - { role: "Volunteer - La Jolla High School", dates: "Fall 2021", org: "SciChats@Salk Education Outreach", org_url: "https://www.salk.edu/about/education-outreach/volunteer-opportunities/scichatssalk/", location: "La Jolla, California", parent: "Salk Institute for Biological Studies" }
 
+professional_development:
+  - title: "Innovation and Commercialization Course"
+    org: "Harvard Biotech Club, Harvard Medical School"
+    location: "Boston, Massachusetts"
+    dates: "Fall 2017 -- Spring 2018"
+  - title: "Biotechnology Incubator Program"
+    org: "Harvard Biotech Club, Harvard Medical School"
+    location: "Boston, Massachusetts"
+    dates: "Fall 2018 -- Spring 2020"
+    notes: "Market assessment and lean startup (Raqia Therapeutics)."
+
 skills:
-  programming_languages: ["R", "Python", "Bash"]
-  bioinformatics: ["Genomics", "Transcriptomics", "Epigenomics", "Single-Cell Genomics", "Machine Learning", "Statistical Modeling"]
-  other: ["Google Cloud Platform", "Docker", "Git", "GitHub Actions"]
+  programming: ["Python", "Bash", "R"]
+  data_types: ["Single-cell and bulk genomics (RNA-seq, ATAC-seq, whole-genome sequencing, targeted sequencing)", "Genotyping arrays (Illumina)"]
+  other: ["Google Cloud Platform", "Docker", "Git", "GitHub Actions", "Scikit-learn", "PyTorch", "PyTorch Lightning", "Seurat", "Scanpy"]
 
