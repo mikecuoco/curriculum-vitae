@@ -14,8 +14,8 @@ jobs:
 
       - name: Install TeX deps, setup uv, and build via Makefile
         run: |
-          apt-get update
-          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
             make curl python3 python3-venv \
             latexmk biber texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra
           curl -LsSf https://astral.sh/uv/install.sh | sh
