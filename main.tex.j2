@@ -40,7 +40,7 @@
 % --- Page layout settings ---
 
 % Set page margins
-\usepackage[left=0.75in, right=0.75in, bottom=0.7in, top=0.7in]{geometry}
+\usepackage[left=0.4in, right=0.4in, bottom=0.75in, top=0.75in]{geometry}
 
 % Set line spacing
 \renewcommand{\baselinestretch}{1.15}
@@ -100,7 +100,7 @@
 \setlength{\tabcolsep}{8pt}
 
 % Set the width of each column
-\begin{longtable}{p{1.6in}p{4.9in}}
+\begin{longtable}{p{2.0in}p{4.9in}}
 
 % --- Section: Research interests ---
 
@@ -229,7 +229,7 @@
 \setlength{\tabcolsep}{8pt}
 
 % % Set the width of each column
-\begin{longtable}{p{1.6in}p{4.9in}}
+\begin{longtable}{p{2.0in}p{4.9in}}
   
 % --- Section: Mentorship ---
 ((* for m in mentorship *))
@@ -252,6 +252,19 @@
 ((* endfor *))((* endif *))
 & \\
 ((* endfor *))
+
+% --- Section: Professional development ---
+((* if professional_development is defined and professional_development|length > 0 *))
+((* for p in professional_development *))
+((* if loop.first *)){\textcolor{OliveGreen}{Professional Development}} & \textbf{(( p.title ))} \hfill (( p.dates | default('') )) \\
+((* else *))& \textbf{(( p.title ))} \hfill (( p.dates | default('') )) \\
+((* endif *))
+& \textit{(( p.org | default('') ))} \hfill (( p.location | default('') )) \\
+((* if p.notes is defined *))& (( p.notes )) \\
+((* endif *))
+& \\
+((* endfor *))
+((* endif *))
 
 % --- Section: Service and outreach ---
 ((* for s in service *))
