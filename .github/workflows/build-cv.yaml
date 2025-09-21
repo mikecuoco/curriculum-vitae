@@ -3,9 +3,7 @@ name: build
 on:
   push:
     branches: [main, master]
-  repository_dispatch:
-    types: [get-commit-bibs]
-    
+
 jobs:
   build-cv:
     runs-on: ubuntu-latest
@@ -13,25 +11,21 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.client_payload.ref }}
-      - run: echo ${{ github.event.client_payload.sha }}
 
-      - name: Get bibliographic data, install dependencies, build CV
-        uses: xu-cheng/texlive-action@v2
-        with:
-          scheme: full
-          run: |
-            apk add wget
-            wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/pubmed.bib
-            wget https://raw.githubusercontent.com/mikecuoco/FindMyPubs/master/preprints.bib
-            tlmgr update --self --all
-            tlmgr install fontawesome5 paracol
-            pdflatex main
-            biber main
-            pdflatex main
+      - name: Install TeX deps, setup uv, and build via Makefile
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            make curl python3 python3-venv \
+            latexmk biber texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+          uv --version
+          uv sync
+          make pdf
 
       - name: Commit results
+        if: ${{ github.actor != 'nektos/act' }}
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Action"
@@ -40,6 +34,7 @@ jobs:
           git push origin || echo "No changes to commit"
 
       - name: Repository Dispatch
+        if: ${{ github.actor != 'nektos/act' }}
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}

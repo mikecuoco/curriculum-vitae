@@ -1,0 +1,302 @@
+% --- LaTeX CV Template by Mike Cuoco ---
+
+% Set document class and font size
+\documentclass[letterpaper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+
+% Package imports
+\usepackage{setspace, longtable, graphicx, hyphenat, hyperref, fancyhdr, ifthen, enumitem, amsmath, fontawesome5, paracol, paralist}
+
+% Bibliography
+% TODO: fix style to show show full names and/or not show journal issue
+% Style = AuthorYear to show authors and no numbers
+% Sorting = ydnt to sort by year, then by date, then by title in descending order
+\usepackage[backend=biber, style=authortitle, sorting=ydnt, maxbibnames=999, url=false, isbn=false]{biblatex}
+\addbibresource{work.bib}
+\renewcommand*{\bibfont}{\small}
+
+% Suppress "In:" before journal name for @article entries only
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
+
+% use this command to bold my name (adapted from here: https://tinyurl.com/y9f746x5)
+\newcommand{\makeauthorbold}[1]{%
+  \DeclareNameFormat{author}{%
+    \ifthenelse{\value{listcount}=1}
+    {%
+      {\expandafter\ifstrequal\expandafter{\namepartfamily}{#1}{\mkbibbold{\namepartfamily\addcomma\addspace \namepartgiveni}}{\namepartfamily\addcomma\addspace \namepartgiveni}}
+      %
+    }{\ifnumless{\value{listcount}}{\value{liststop}}
+        {\expandafter\ifstrequal\expandafter{\namepartfamily}{#1}{\mkbibbold{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni}}{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni}}
+        {\expandafter\ifstrequal\expandafter{\namepartfamily}{#1}{\mkbibbold{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni\addcomma\isdot}}{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni\addcomma\isdot}}%
+      }
+    \ifthenelse{\value{listcount}<\value{liststop}}
+    {\addcomma\space}{}
+  }
+}
+\makeauthorbold{Cuoco}
+
+% --- Page layout settings ---
+
+% Set page margins
+\usepackage[left=0.4in, right=0.4in, bottom=0.75in, top=0.75in]{geometry}
+
+% Set line spacing
+\renewcommand{\baselinestretch}{1.15}
+
+% --- Page formatting ---
+
+% Set link colors
+\usepackage[dvipsnames]{xcolor}
+\hypersetup{colorlinks=false, linkcolor=RoyalBlue, urlcolor=RoyalBlue}
+
+% Set font to Libertine, including math support
+% \usepackage{libertine}
+% \usepackage[libertine]{newtxmath}
+
+
+% --- Document starts here ---
+
+\begin{document}
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+
+% Set Footer
+\fancyfoot{}
+\fancyfoot[R]{Curriculum Vitae, (( name )), \thepage}
+
+% Name and date of last update to this document
+\noindent{\Huge{(( name ))}
+\hfill{\it\footnotesize Updated \today}} \\
+\noindent{(( title ))}
+
+% Current position information
+
+% --- Contact information and other items ---
+
+\begin{center}
+\begin{tabular}{lllll}
+% Line 1: Email, Phone Number, and Location
+\faIcon{envelope} \href{mailto:(( email ))}{(( email ))} &
+\faIcon{phone} (( phone )) &
+((* if affiliations is defined and affiliations|length > 0 *))\faIcon{building} \href{(( affiliations[0].url ))}{(( affiliations[0].label ))}((* endif *)) &
+((* if affiliations is defined and affiliations|length > 1 *))\faIcon{building} \href{(( affiliations[1].url ))}{(( affiliations[1].label ))}((* endif *)) &
+\faIcon{map-marker} (( location )) \\
+
+% Line 2: ORCID, Twitter, Github, LinkedIn
+\faIcon{globe} \href{(( website ))}{michaelcuoco.com} &
+\faIcon{orcid} \href{https://orcid.org/(( orcid ))}{(( orcid ))} &
+\faIcon{github} \href{https://github.com/(( github ))/}{(( github ))} &
+\faIcon{twitter} \href{https://twitter.com/(( twitter ))}{\texttt{\detokenize{@(( twitter ))}}}  &  
+\faIcon{linkedin} \href{https://www.linkedin.com/in/(( linkedin ))/}{(( linkedin ))} \\
+
+\end{tabular}
+\end{center}
+
+% --- Start the two-column table storing the main content ---
+
+% Set spacing between columns
+\setlength{\tabcolsep}{8pt}
+
+% Set the width of each column
+\begin{longtable}{p{2.0in}p{4.9in}}
+
+% --- Section: Research interests ---
+
+((* if research_interests is defined and research_interests|length > 0 *))
+((* if research_interests is sequence and not (research_interests is string) *))
+((* for ri in research_interests *))
+((* if loop.first *))\nohyphens{\textcolor{OliveGreen}{Research interests}} & (( ri )) \\
+((* else *))& (( ri )) \\
+((* endif *))
+((* endfor *))
+& \\
+((* else *))
+\nohyphens{\textcolor{OliveGreen}{Research interests}} & (( research_interests )) \\
+& \\
+((* endif *))
+((* else *))
+\nohyphens{\textcolor{OliveGreen}{Research interests}} & \\
+((* endif *))
+
+% --- Section: Education ---
+
+((* if education is defined and education|length > 0 *))
+((* for edu in education *))
+((* if loop.first *))\textcolor{OliveGreen}{Education} & \textbf{(( edu.institution ))} \hfill (( edu.location )) \\
+((* else *))& \textbf{(( edu.institution ))} \hfill (( edu.location )) \\
+((* endif *))
+& (( edu.degree )) \hfill (( edu.date )) \\
+((* if edu.committee is defined *))& Thesis Committee:
+\begin{compactitem}
+((* for m in edu.committee *))
+\item \href{(( m.url ))}{(( m.name ))}((* if m.role is defined *)) (( "(" ~ m.role ~ ")" ))((* endif *))
+((* endfor *))
+\end{compactitem} \\
+((* endif *))
+& \\
+((* endfor *))
+((* else *))
+\textcolor{OliveGreen}{Education} & \\
+((* endif *))
+
+% --- Section: Honors and Awards ---
+
+((* if awards is defined and awards|length > 0 *))
+((* for aw in awards *))
+((* if loop.first *)){\textcolor{OliveGreen}{Honors and Awards}} ((* if aw.url is defined and aw.url *))& \href{(( aw.url ))}{(( aw.title ))} \hfill (( aw.year ))\\((* else *))& (( aw.title )) \hfill (( aw.year ))\\((* endif *))
+((* else *))((* if aw.url is defined and aw.url *))& \href{(( aw.url ))}{(( aw.title ))} \hfill (( aw.year ))\\((* else *))& (( aw.title )) \hfill (( aw.year ))\\((* endif *))
+((* endif *))
+((* if aw.org is defined *))& \hspace{0.1in} \textit{(( aw.org ))} \\
+((* endif *))
+((* endfor *))
+& \\
+((* else *))
+{\textcolor{OliveGreen}{Honors and Awards}} & \\
+((* endif *))
+
+% --- Section: Research experience ---
+
+((* if experience is defined and experience|length > 0 *))
+((* for ex in experience *))
+((* if loop.first *)){\textcolor{OliveGreen}{Research experience}} & \textbf{(( ex.role ))} \hfill (( ex.dates ))   \\
+((* else *))& \textbf{(( ex.role ))} \hfill (( ex.dates ))   \\
+((* endif *))
+((* for org in ex.orgs *))
+& \textit{(( org.name ))} \hfill (( org.location )) \\
+((* endfor *))
+((* if ex.mentors is defined *))& Mentors: ((* for m in ex.mentors *))\href{(( m.url | default('#') ))}{(( m.name ))}((* if not loop.last *)), ((* endif *))((* endfor *)) \\
+((* endif *))
+((* if ex.notes is defined *))& (( ex.notes )) \\
+((* endif *))
+& \\
+((* endfor *))
+((* else *))
+{\textcolor{OliveGreen}{Research experience}} & \\
+((* endif *))
+
+\end{longtable} % End table to be biblatex friendly
+
+% --- Section: In Preparation / Submitted ---
+\columnratio{0.02}
+\begin{paracol}{2}
+  \switchcolumn
+  \nocite{*}
+  % Heading will only appear if there are entries
+  \printbibliography[
+    heading=subbibliography,
+    title={\textcolor{OliveGreen}{\textbf{Research}: In Preparation}},
+    keyword={in preparation}
+  ]
+  \printbibliography[
+    heading=subbibliography,
+    title={\textcolor{OliveGreen}{\textbf{Research}: Submitted}},
+    keyword={submitted}
+  ]
+\end{paracol}
+
+% --- Section: Publications ---
+\columnratio{0.02}
+\begin{paracol}{2}
+  \switchcolumn
+  \nocite{*}
+  % Heading will only appear if there are entries
+\printbibliography[heading=subbibliography, title={\textcolor{OliveGreen}{\textbf{Research}: Published}}, keyword=published]
+\end{paracol}
+
+% --- Section: Preprints ---
+\columnratio{0.02}
+\begin{paracol}{2}
+  \switchcolumn
+  \nocite{*}
+  % Heading will only appear if there are entries
+\printbibliography[heading=subbibliography, title={\textcolor{OliveGreen}{\textbf{Research}: Preprint}}, keyword=preprint]
+\end{paracol}
+
+% --- Section: Conferences ---
+\columnratio{0.02}
+\begin{paracol}{2}
+  \switchcolumn
+  \nocite{*}
+  % Heading will only appear if there are entries
+  \printbibliography[heading=subbibliography, title={\textcolor{OliveGreen}{\textbf{Research}: Conferences}}, keyword=conference]
+\end{paracol}
+
+% --- Restart the two-column table storing the main content ---
+
+% % Set spacing between columns
+\setlength{\tabcolsep}{8pt}
+
+% % Set the width of each column
+\begin{longtable}{p{2.0in}p{4.9in}}
+  
+% --- Section: Mentorship ---
+((* for m in mentorship *))
+((* if loop.first *)){\textcolor{OliveGreen}{Mentorship}} & \textbf{(( m.name ))} \hfill (( m.dates )) \\
+((* else *))& \textbf{(( m.name ))} \hfill (( m.dates )) \\
+((* endif *))
+& ((* if m.org_url is defined *))\href{(( m.org_url ))}{\textit{(( m.org ))}}((* else *))\textit{(( m.org ))}((* endif *)) \hfill (( m.location )) \\
+((* if m.current is defined *))& \textbf{Current:} (( m.current )) \hfill (( m.current_location )) \\
+((* endif *))
+& \\
+((* endfor *))
+
+% --- Section: Teaching experience ---
+((* for t in teaching *))
+((* if loop.first *)){\textcolor{OliveGreen}{Teaching}} & \textbf{(( t.role ))} \hfill (( t.dates )) \\
+((* else *))& \textbf{(( t.role ))} \hfill (( t.dates )) \\
+((* endif *))
+& \textit{(( t.org ))} \hfill (( t.location )) \\
+((* if t.courses is defined *))((* for c in t.courses *))& (( c )) \\
+((* endfor *))((* endif *))
+& \\
+((* endfor *))
+
+% --- Section: Professional development ---
+((* if professional_development is defined and professional_development|length > 0 *))
+((* for p in professional_development *))
+((* if loop.first *)){\textcolor{OliveGreen}{Professional Development}} & \textbf{(( p.title ))} \hfill (( p.dates | default('') )) \\
+((* else *))& \textbf{(( p.title ))} \hfill (( p.dates | default('') )) \\
+((* endif *))
+& \textit{(( p.org | default('') ))} \hfill (( p.location | default('') )) \\
+((* if p.notes is defined *))& (( p.notes )) \\
+((* endif *))
+& \\
+((* endfor *))
+((* endif *))
+
+% --- Section: Service and outreach ---
+((* for s in service *))
+((* if loop.first *)){\textcolor{OliveGreen}{Service / Outreach}} & \textbf{(( s.role ))} \hfill (( s.dates )) \\
+((* else *))& \textbf{(( s.role ))} \hfill (( s.dates )) \\
+((* endif *))
+& ((* if s.org_url is defined *))\href{(( s.org_url ))}{\textit{(( s.org ))}}((* else *))\textit{(( s.org ))}((* endif *)) \hfill (( s.location )) \\
+((* if s.parent is defined *))& \textit{(( s.parent ))} \\
+((* endif *))
+& \\
+((* endfor *))
+
+% --- Section: Various skills ---
+((* if skills is defined and skills|length > 0 *))
+((* for key, value in skills.items() *))
+((* if loop.first *)){\textcolor{OliveGreen}{Proficiencies / Skills}} & \textbf{(( key | replace('_', ' ') | title ))}\\
+((* else *))& \textbf{(( key | replace('_', ' ') | title ))}\\
+((* endif *))
+((* if value is sequence and not (value is string) *))
+& (( value | join(', ') )) \\
+((* else *))
+& (( value )) \\
+((* endif *))
+& \\
+((* endfor *))
+((* else *))
+{\color{OliveGreen}{Proficiencies / Skills}} & \\
+((* endif *))
+
+% --- End of CV! ---
+\end{longtable}
+
+\end{document}
+
+

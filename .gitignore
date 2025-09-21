@@ -1,3 +1,7 @@
 main.*
-!main.tex
+!main.tex.j2
 *bib
+*.egg-info
+*.lock
+.venv
+!work.bib
