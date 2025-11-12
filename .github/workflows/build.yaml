@@ -5,7 +5,7 @@ on:
     branches: [main, master]
 
 jobs:
-  build-cv:
+  build:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -22,15 +22,15 @@ jobs:
           export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
           uv --version
           uv sync
-          make pdf
+          make cv resume
 
       - name: Commit results
         if: ${{ github.actor != 'nektos/act' }}
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Action"
-          git add -f main.pdf || echo "No changes to add"
-          git commit -m 'Re-build CV' || echo "No changes to commit"
+          git add -f cv.pdf resume.pdf || echo "No changes to add"
+          git commit -m 'Re-build CV and resume' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 
       - name: Repository Dispatch
