@@ -1,5 +1,7 @@
-main.*
-!main.tex.j2
+cv.*
+resume.*
+!cv.tex.j2
+!resume.tex.j2
 *bib
 *.egg-info
 *.lock

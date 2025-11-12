@@ -33,9 +33,13 @@ def render_template(template_path: Path, data: dict, output_path: Path):
 
 def main():
     repo_root = Path(__file__).parent
-    template_path = repo_root / "main.tex.j2"
-    data_path = repo_root / "cv.yaml"
-    output_path = repo_root / "main.tex"
+    
+    # Accept optional template name as first argument (default: cv)
+    template_name = sys.argv[1] if len(sys.argv) > 1 else "cv"
+    
+    template_path = repo_root / f"{template_name}.tex.j2"
+    data_path = repo_root / "data.yaml"
+    output_path = repo_root / f"{template_name}.tex"
 
     if not template_path.exists():
         print(f"Template not found: {template_path}", file=sys.stderr)

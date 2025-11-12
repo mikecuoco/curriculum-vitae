@@ -1,19 +1,27 @@
-.PHONY: all render pdf bib clean distclean
+.PHONY: all cv resume render pdf bib clean distclean
 
-TEX := main
+TEX := cv
 LATEXMK := latexmk
 PDFLATEX := pdflatex
 BIBER := biber
 LATEXMK_OPTS := -pdf -interaction=nonstopmode -file-line-error
 
-all: pdf
+all: cv
+
+# Build CV (cv.tex)
+cv: TEX = cv
+cv: render pdf
+
+# Build Resume (resume.tex)
+resume: TEX = resume
+resume: render pdf
 
 # Render LaTeX from Jinja2 + YAML
-render: cv.yaml main.tex.j2
-	uv run python render.py
+render: data.yaml $(TEX).tex.j2
+	uv run python render.py $(TEX)
 
 # Build PDF using latexmk and biber (auto)
-pdf: render
+pdf:
 	$(LATEXMK) $(LATEXMK_OPTS) -e '$$bibtex=q/biber %O %S/' $(TEX).tex
 
 # Explicit biber pipeline: pdflatex -> biber -> pdflatex x2
@@ -27,5 +35,5 @@ clean:
 	$(LATEXMK) -c
 
 distclean: clean
-	rm -f $(TEX).pdf $(TEX).bbl $(TEX).bcf
+	rm -f cv.pdf cv.bbl cv.bcf resume.pdf resume.bbl resume.bcf
 

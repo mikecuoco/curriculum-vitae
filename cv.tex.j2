@@ -266,6 +266,22 @@
 ((* endfor *))
 ((* endif *))
 
+% --- Section: Academic service ---
+((* if academic_service is defined and academic_service|length > 0 *))
+((* for a in academic_service *))
+((* if loop.first *)){\textcolor{OliveGreen}{Academic service}} & \textbf{(( a.role ))} \hfill (( a.dates | default('') )) \\
+((* else *))& \textbf{(( a.role ))} \hfill (( a.dates | default('') )) \\
+((* endif *))
+((* if a.org is defined *))& \textit{(( a.org ))} \\
+((* endif *))
+((* if a.journals is defined *))& Journals: ((* for j in a.journals *))\textit{(( j ))}((* if not loop.last *)), ((* endif *))((* endfor *)) \\
+((* endif *))
+((* if a.notes is defined *))& (( a.notes )) \\
+((* endif *))
+& \\
+((* endfor *))
+((* endif *))
+
 % --- Section: Service and outreach ---
 ((* for s in service *))
 ((* if loop.first *)){\textcolor{OliveGreen}{Service / Outreach}} & \textbf{(( s.role ))} \hfill (( s.dates )) \\

@@ -1,0 +1,247 @@
+% --- LaTeX Two-Page Resume Template by Mike Cuoco ---
+
+% Set document class and font size (tighter for 2-pages)
+\documentclass[letterpaper, 8pt]{article}
+\usepackage[utf8]{inputenc}
+
+% Package imports
+\usepackage{setspace, longtable, graphicx, hyphenat, hyperref, fancyhdr, ifthen, enumitem, amsmath, fontawesome5, paracol, paralist}
+
+% We keep biblatex setup to reuse macros, but we don't print bibliographies here
+\usepackage[backend=biber, style=authortitle, sorting=ydnt, url=false, isbn=false, giveninits=true, maxnames=8, minnames=8]{biblatex}
+\addbibresource{work.bib}
+\renewcommand*{\bibfont}{\small}
+
+% Suppress "In:" before journal name for @article entries only
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
+% Bold my name in bibliographies (CORRECTED, ROBUST VERSION)
+\newcommand{\makeauthorbold}[1]{%
+  \DeclareNameFormat{author}{%
+    % --- 1. Print the name (bold or normal) ---
+    % This part checks if the family name is the one we want to bold.
+    \expandafter\ifstrequal\expandafter{\namepartfamily}{#1}
+      {\mkbibbold{\namepartfamily\addcomma\addspace\namepartgiveni}} % BOLD
+      {\namepartfamily\addcomma\addspace\namepartgiveni} % NORMAL
+    %
+    % --- 2. Add correct punctuation OR "et al." ---
+    % This logic was missing from your original command.
+    %
+    % Check if this is the last name to be printed (respects minnames)
+    \ifthenelse{\value{listcount} < \value{liststop}}
+      {\addcomma\space} % NOT the last name, so just add a comma
+      {%
+        % This IS the last name to be printed.
+        % Now, check if the list was truncated (i.e., if there are more names)
+        \ifmorenames
+          {\addcomma\space\bibstring{andothers}} % If so, add "et al."
+          {} % Otherwise, do nothing. The style will add the final period.
+      }%
+  }
+}
+\makeauthorbold{Cuoco}
+
+% --- Page layout settings ---
+
+% Tighter page margins for two pages
+\usepackage[left=0.4in, right=0.4in, bottom=0.6in, top=0.4in]{geometry}
+
+% Tighter line spacing
+\renewcommand{\baselinestretch}{0.95}
+
+% --- Page formatting ---
+
+% Link colors
+\usepackage[dvipsnames]{xcolor}
+\hypersetup{colorlinks=false, linkcolor=RoyalBlue, urlcolor=RoyalBlue}
+
+% --- Document starts here ---
+
+\begin{document}
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+
+% Header
+\noindent{\Huge{(( name ))}
+\hfill{\it\footnotesize Updated \today}} \\
+
+% Contact information (centered, compact)
+\begin{center}
+\begin{tabular}{lllll}
+% Line 1: Email, Phone Number, and Location
+\faIcon{envelope} \href{mailto:(( email ))}{(( email ))} &
+\faIcon{phone} (( phone )) &
+((* if affiliations is defined and affiliations|length > 0 *))\faIcon{building} \href{(( affiliations[0].url ))}{(( affiliations[0].label ))}((* endif *)) &
+((* if affiliations is defined and affiliations|length > 1 *))\faIcon{building} \href{(( affiliations[1].url ))}{(( affiliations[1].label ))}((* endif *)) &
+\faIcon{map-marker} (( location )) \\
+
+% Line 2: ORCID, Twitter, Github, LinkedIn
+\faIcon{globe} \href{(( website ))}{michaelcuoco.com} &
+\faIcon{orcid} \href{https://orcid.org/(( orcid ))}{(( orcid ))} &
+\faIcon{github} \href{https://github.com/(( github ))/}{(( github ))} &
+\faIcon{twitter} \href{https://twitter.com/(( twitter ))}{\texttt{\detokenize{@(( twitter ))}}}  &  
+\faIcon{linkedin} \href{https://www.linkedin.com/in/(( linkedin ))/}{(( linkedin ))} \\
+
+\end{tabular}
+\end{center}
+
+
+% --- Compact two-column content ---
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{p{1.45in}p{5.45in}}
+
+% Professional Summary
+\textcolor{OliveGreen}{\textbf{Summary}} & Computational Biologist and PhD Candidate (exp. Jan 2026) with a unique end-to-end background bridging wet-lab functional genomics, computational biology, and bioinformatics with advanced computational algorithm development. Expertise in designing and applying novel bioinformatics pipelines for NGS and single-cell data to dissect complex disease mechanisms. \\
+& \\
+
+% Core Competencies
+((* if skills is defined and skills|length > 0 *))
+((* for key, value in skills.items() *))
+((* if loop.first *)){\textcolor{OliveGreen}{\textbf{Core Competencies}}} & \textbf{(( key | replace('_', ' ') | title ))}\\
+((* else *))& \textbf{(( key | replace('_', ' ') | title ))}\\
+((* endif *))
+((* if value is sequence and not (value is string) *))
+& (( value | join(', ') )) \\
+((* else *))
+& (( value )) \\
+((* endif *))
+& \\
+((* endfor *))
+((* else *))
+{\textcolor{OliveGreen}{\textbf{Core Competencies}}} & \\
+((* endif *))
+
+% Research Experience
+((* if experience is defined and experience|length > 0 *))
+((* set phd = experience[0] *))
+((* set ra = experience[1] *))
+((* set undergrad = experience[2] *))
+\textcolor{OliveGreen}{\textbf{Research Experience}} & \textcolor{OliveGreen}{\textbf{(( phd.role )), Bioinformatics \& Systems Biology}} \hfill \mbox{(( phd.dates ))} \\
+& \textit{(( phd.orgs[0].name )) \& (( phd.orgs[1].name ))} \\
+& \\
+& \textbf{Biological Questions:} How does somatic retrotransposition impact brain aging and neurodegenerative disease? Can we accurately quantify transposable element expression to understand its role in neuronal health? \\
+& \\
+& \textbf{Somatic LINE-1 Insertion Detection:} Developed novel algorithms to classify somatic LINE-1 insertions from amplification artifacts in single-neuron targeted sequencing. Discovered associations between insertion rates, disease, brain region, and genomic loci. \\
+& \\
+& \textbf{Retrotransposon Transcription Quantification:} Constructed a novel transcriptome and benchmarked its accuracy in quantifying retrotransposon transcription from simulated and real short-read RNA-seq data. \\
+& \\
+& \textbf{scRNA-seq / Bulk RNA-seq Analysis:} Collaborated with wet-lab researchers on experimental design; built analysis pipelines, demultiplexed diverse cell lines, and identified disease-relevant gene expression signals in Alzheimer's disease projects. \\
+& \\
+& \textbf{Leadership:} Mentored two master's students in computational biology. \\
+& \\
+& \textcolor{OliveGreen}{Selected Publications:} \\
+& \fullcite{Cuoco2025A} \textit{(In Preparation)} \\
+& \\
+& \fullcite{Cuoco2025B} \textit{(In Preparation)} \\
+& \\
+& \fullcite{Revanna2025} \textit{(Submitted)} \\
+& \\
+& \fullcite{TodaCellRep2024} \\
+& \\
+& \textcolor{OliveGreen}{\textbf{(( ra.role ))}} \hfill \mbox{(( ra.dates ))} \\
+& \textit{(( ra.orgs[0].name ))} \\
+& \\
+& \textbf{Biological Questions:} How do tumor and immune cells drive cancer progression and resistance to therapy? \\
+& \\
+& \textbf{NGS \& Functional Genomics:} Gained deep wet-lab expertise executing numerous single-cell/bulk RNA-seq, ATAC-seq, and functional genomics (CRISPR, Perturb-seq) screens. \\
+& \\
+& \textbf{Computational Analysis:} Gained computational expertise by analyzing complex single-cell RNA and metabolomics datasets to define mechanisms of therapeutic resistance. \\
+& \\
+& \textcolor{OliveGreen}{Selected Publications:} \\
+& \fullcite{OrenNature2021} \\
+& \\
+& \fullcite{Jerby-ArnonCell2018} \\
+& \\
+& \textcolor{OliveGreen}{\textbf{(( undergrad.role ))}} \hfill \mbox{(( undergrad.dates ))} \\
+& \textit{(( undergrad.orgs[0].name ))} \\
+& \\
+& \textbf{Biological Questions:} How does somatic aneuploidy contribute to cancer development and cell fitness? \\
+& \\
+& Developed foundational wet-lab skills (cell culture, plasmid cloning, CRISPR gene editing) and co-authored a Nature publication. \\
+& \\
+& \textcolor{OliveGreen}{Selected Publications:} \\
+& \fullcite{ShihNature2023} \\
+& \\
+((* endif *))
+
+% Education
+((* if education is defined and education|length > 0 *))
+((* for edu in education *))
+((* if loop.first *))\textcolor{OliveGreen}{\textbf{Education}} & \textbf{(( edu.institution ))} | (( edu.location.split(',')[0] )) \\
+((* else *))& \textbf{(( edu.institution ))} | (( edu.location.split(',')[0] )) \\
+((* endif *))
+& (( edu.degree )) | (( edu.date )) \\
+& \\
+((* endfor *))
+((* endif *))
+
+% Honors & Awards
+((* if awards is defined and awards|length > 0 *))
+\textcolor{OliveGreen}{\textbf{Honors \& Awards}} & (( awards[0].title )) | (( awards[0].org )) \hfill \mbox{(( awards[0].year ))} \\
+& (( awards[1].title )) | (( awards[1].org )) \hfill \mbox{(( awards[1].year ))} \\
+& \\
+((* endif *))
+
+% Service
+((* set all_activities = [] *))
+((* if teaching is defined and teaching|length > 0 *))
+((* for t in teaching *))
+((* if '2025' in t.dates or '2022' in t.dates or '2021' in t.dates *))
+((* set _ = all_activities.append({'type': 'teaching', 'data': t, 'year': '2025' if '2025' in t.dates else ('2022' if '2022' in t.dates else '2021')}) *))
+((* endif *))
+((* endfor *))
+((* endif *))
+((* if academic_service is defined and academic_service|length > 0 *))
+((* for serv in academic_service *))
+((* set start_year = serv.dates.split('--')[0].strip() *))
+((* if start_year|int >= 2016 *))
+((* set _ = all_activities.append({'type': 'academic_service', 'data': serv, 'year': start_year}) *))
+((* endif *))
+((* endfor *))
+((* endif *))
+((* if service is defined and service|length > 0 *))
+((* for s in service *))
+((* set start_year = s.dates.split('--')[0].strip() *))
+((* if start_year|int >= 2016 *))
+((* set _ = all_activities.append({'type': 'service', 'data': s, 'year': start_year}) *))
+((* endif *))
+((* endfor *))
+((* endif *))
+((* set sorted_activities = all_activities|sort(attribute='year', reverse=True) *))
+((* for activity in sorted_activities[:3] *))
+((* if loop.first *))
+\textcolor{OliveGreen}{\textbf{Service}} & ((* if activity.type == 'teaching' *))\textbf{(( activity.data.role | title ))} \hfill \mbox{(( activity.data.dates ))} \\
+& \textit{(( activity.data.org ))} \\
+((* if activity.data.courses is defined *))
+& \textit{Courses:} (( activity.data.courses | join(', ') )) \\
+((* endif *))
+& \\
+((* elif activity.type == 'academic_service' *))\textbf{(( activity.data.role | title ))}, ((* for j in activity.data.journals *))\textit{(( j ))}((* if not loop.last *)), ((* endif *))((* endfor *)) \hfill \mbox{(( activity.data.dates ))} \\
+& \\
+((* elif activity.type == 'service' *))\textbf{(( activity.data.role ))} \hfill \mbox{(( activity.data.dates ))} \\
+& \textit{(( activity.data.org ))((* if activity.data.parent *)), (( activity.data.parent ))((* endif *))} \\
+& \\
+((* endif *))
+((* else *))
+& ((* if activity.type == 'teaching' *))\textbf{(( activity.data.role | title ))} \hfill \mbox{(( activity.data.dates ))} \\
+& \textit{(( activity.data.org ))} \\
+((* if activity.data.courses is defined *))
+& \textit{Courses:} (( activity.data.courses | join(', ') )) \\
+((* endif *))
+& \\
+((* elif activity.type == 'academic_service' *))\textbf{(( activity.data.role | title ))}, ((* for j in activity.data.journals *))\textit{(( j ))}((* if not loop.last *)), ((* endif *))((* endfor *)) \hfill \mbox{(( activity.data.dates ))} \\
+& \\
+((* elif activity.type == 'service' *))\textbf{(( activity.data.role ))} \hfill \mbox{(( activity.data.dates ))} \\
+& \textit{(( activity.data.org ))((* if activity.data.parent *)), (( activity.data.parent ))((* endif *))} \\
+& \\
+((* endif *))
+((* endif *))
+((* endfor *))
+& \\
+
+\end{longtable}
+
+\end{document}
+
+

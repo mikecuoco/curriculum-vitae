@@ -19,7 +19,7 @@ education:
   - institution: "University of California, San Diego"
     location: "La Jolla, California"
     degree: "PhD in Bioinformatics and Systems Biology"
-    date: "Expected December 2025"
+    date: "Expected January 2026"
     committee:
       - { name: "Fred H. Gage, PhD", url: "https://www.salk.edu/scientist/rusty-gage/", role: "Chair" }
       - { name: "Eran A. Mukamel, PhD", url: "https://cogsci.ucsd.edu/people/faculty/eran-mukamel.html", role: "Co-Chair" }
@@ -91,6 +91,11 @@ service:
   - { role: "Volunteer - High Tech High Mesa", dates: "Fall 2021", org: "SciChats@Salk Education Outreach", org_url: "https://www.salk.edu/about/education-outreach/volunteer-opportunities/scichatssalk/", location: "La Jolla, California", parent: "Salk Institute for Biological Studies" }
   - { role: "Volunteer - La Jolla High School", dates: "Fall 2021", org: "SciChats@Salk Education Outreach", org_url: "https://www.salk.edu/about/education-outreach/volunteer-opportunities/scichatssalk/", location: "La Jolla, California", parent: "Salk Institute for Biological Studies" }
 
+academic_service:
+  - role: "Peer reviewer"
+    dates: "2022 -- Present"
+    journals: ["Cell Genomics", "Nucleic Acids Research", "Science Advances", "Science", "Nature Neuroscience", "Neuron", "Epigenetics", "Nature Genetics"]
+
 professional_development:
   - title: "Innovation and Commercialization Course"
     org: "Harvard Biotech Club, Harvard Medical School"
@@ -103,7 +108,8 @@ professional_development:
     notes: "Market assessment and lean startup (Raqia Therapeutics)."
 
 skills:
-  programming: ["Python", "Bash", "R"]
-  data_types: ["Single-cell and bulk genomics (RNA-seq, ATAC-seq, whole-genome sequencing, targeted sequencing)", "Genotyping arrays (Illumina)"]
-  other: ["Google Cloud Platform", "Docker", "Git", "GitHub Actions", "Scikit-learn", "PyTorch", "PyTorch Lightning", "Seurat", "Scanpy"]
-
+  computational_methods: ["Bioinformatics Pipeline Development", "Novel Algorithm Design", "Machine Learning", "Deep Learning"]
+  genomics_methods: ["Single-cell and bulk genomics (RNA-seq, ATAC-seq, ChIP-seq, whole-genome sequencing, targeted sequencing)", "Genotyping arrays", "CRISPR screening"]
+  tools: ["Python", "R", "Bash", "Snakemake", "Seurat", "Scanpy", "PyTorch", "Scikit-learn"]
+  devops: ["Google Cloud Platform", "Docker", "Git", "GitHub Actions"]
+  disease_expertise: ["Alzheimer's Disease", "Cancer", "Immune System", "Brain Aging", "Schizophrenia"]
